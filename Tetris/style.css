@@ -1,0 +1,129 @@
+/*#282828 black  #4e450grey #6f2232dull
+ #950740darkpink   #c3073fligh pink*/
+/*#000000 #181818 #2CCCC3 #FACD3D #E60576  #5626C4
+
+ */
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /*background-color: #282828;
+  background-color: #181818;*/
+  background-color: #5adbff;
+  font-family: "Comfortaa", cursive;
+  min-height: 100vh;
+}
+.title {
+  letter-spacing: 2rem;
+  margin-top: 40px;
+  font-size: 100px;
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  color: #111010;
+}
+#score {
+  font-size: 40px;
+  margin: 0 auto;
+}
+.score_text {
+  font-weight: 500;
+  font-size: 50px;
+  margin: 0 auto;
+  font-family: "Comfortaa", cursive;
+  color: #5adbff;
+}
+.container {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.grid {
+  background-color: #111010;
+
+  width: /*400px*/ 500px;
+  height: /*850px*/ 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 20px;
+}
+
+.grid div {
+  height: 50px;
+  width: 50px;
+  border-radius: 10%;
+}
+
+.sq_color {
+  background-color: #2cccc3;
+  border: solid 3px rgba(255, 251, 251, 0.5);
+}
+
+#start_button {
+  font-weight: 500;
+  padding: 20px;
+  margin: 4rem auto;
+  font-size: 50px;
+  border-radius: 15px;
+  background-color: #07004d;
+  color: #5adbff;
+}
+
+#aftaken {
+  display: none;
+}
+
+.mini_grid {
+  height: 160px;
+  width: 160px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 3rem;
+  background-color: #181818;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.mini_grid div {
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
+}
+
+.grids_container {
+  display: flex;
+  flex-wrap: wrap;
+}
+h3 {
+  padding: 20px;
+  font-weight: 500;
+  font-size: 35px;
+  color: #5adbff;
+}
+
+.controls {
+  align-self: flex-end;
+  padding-right: 4rem;
+}
+
+.second_container {
+  display: flex;
+  padding: 0 auto;
+}
+
+.third_container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 8rem;
+  background-color: #111010;
+  border-radius: 20px;
+  padding-top: 3rem;
+  width: 400px;
+  height: 700px;
+  flex-wrap: wrap;
+  padding: 0 auto;
+}
