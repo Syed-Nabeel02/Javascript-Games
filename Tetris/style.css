@@ -1,7 +1,6 @@
 /*#282828 black  #4e450grey #6f2232dull
  #950740darkpink   #c3073fligh pink*/
 /*#000000 #181818 #2CCCC3 #FACD3D #E60576  #5626C4
-
  */
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap");
 * {
@@ -19,18 +18,18 @@ body {
 .title {
   letter-spacing: 2rem;
   margin-top: 40px;
-  font-size: 100px;
+  font-size: 3remx;
   text-align: center;
   font-family: "Comfortaa", cursive;
   color: #111010;
 }
 #score {
-  font-size: 40px;
+  font-size: 2rem;
   margin: 0 auto;
 }
 .score_text {
   font-weight: 500;
-  font-size: 50px;
+  font-size: 2rem;
   margin: 0 auto;
   font-family: "Comfortaa", cursive;
   color: #5adbff;
@@ -67,7 +66,7 @@ body {
   font-weight: 500;
   padding: 20px;
   margin: 4rem auto;
-  font-size: 50px;
+  font-size: 2rem;
   border-radius: 15px;
   background-color: #07004d;
   color: #5adbff;
@@ -101,7 +100,7 @@ body {
 h3 {
   padding: 20px;
   font-weight: 500;
-  font-size: 35px;
+  font-size: 2rem;
   color: #5adbff;
 }
 
