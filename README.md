@@ -1,8 +1,11 @@
-# Tetris
+# Javascript games
+
 
 ## Project Description
-* This tetris game was created using pure javascript, html and css without the use of any external libraries
-* The game can be viewed in the link provided
+* These games were created using pure javascript, html and css without the use of any external libraries
+* The games can be viewed in the link provided
 
-## Link to game
+## Link to tetris
 This is the deployed link to the game created with this code https://syednabeel-tetris.netlify.app/ 
+
+## Link to 2d fighter
