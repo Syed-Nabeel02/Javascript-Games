@@ -15,7 +15,7 @@ class Sprite {
     this.frames = frames;
     this.currentFrame = 0;
     this.framesElapsed = 0;
-    this.framesHold = 7;
+    this.framesHold = 5;
     this.offest = offest;
   }
   draw() {
@@ -85,7 +85,8 @@ class fighter extends Sprite {
       width: attackBox.width,
       height: attackBox.height,
     };
-    this.isAttacking;
+    this.isAttacking1 = false;
+    this.isAttacking2 = false;
     this.offest = offest;
     this.health = 100;
     this.currentFrame = 0;
@@ -118,16 +119,30 @@ class fighter extends Sprite {
     //   this.attackBox.height
     // );
 
-    if (this.position.y + this.height >= canvas.height - 100) {
+    if (this.position.y + this.height >= canvas.height - 50) {
       this.velocity.y = 0;
-      this.position.y = canvas.height - this.height - 90;
+      this.position.y = canvas.height - this.height - 50;
     } else {
       this.velocity.y += gravity;
     }
   }
 
-  attack() {
-    this.isAttacking = true;
+  attack1() {
+    this.isAttacking1 = true;
+    // this.switchSprite("attack1");
+    // setTimeout(() =>{
+    //   50,
+    //   this.isAttacking = false;
+    // })
+    //the figther is not in range this function set the atccking to false after 100ms
+  }
+  attack2() {
+    this.isAttacking2 = true;
+    // this.switchSprite("attack1");
+    // setTimeout(() =>{
+    //   50,
+    //   this.isAttacking = false;
+    // })
     //the figther is not in range this function set the atccking to false after 100ms
   }
   takeHit() {
@@ -150,6 +165,26 @@ class fighter extends Sprite {
     if (
       this.image == this.sprites.takeHit.image &&
       this.currentFrame < this.sprites.takeHit.frames - 1
+    ) {
+      return;
+    }
+    if (
+      this.image == this.sprites.attack2.image &&
+      this.currentFrame < this.sprites.attack2.frames - 1
+    ) {
+      return;
+    }
+    if (
+      this.image == this.sprites.jump.image &&
+      this.currentFrame < this.sprites.jump.frames - 1 &&
+      (sprite != "attack1" || sprite != "attack2")
+    ) {
+      return;
+    }
+    if (
+      this.image == this.sprites.fall.image &&
+      this.currentFrame < this.sprites.fall.frames - 1 &&
+      (sprite != "attack1" || sprite != "attack2")
     ) {
       return;
     }
@@ -191,9 +226,20 @@ class fighter extends Sprite {
           }
         }
         break;
+      case "attack2":
+        {
+          if (this.image != this.sprites.attack2.image) {
+            this.attack2();
+            this.currentFrame = 0;
+            this.frames = this.sprites.attack2.frames;
+            this.image = this.sprites.attack2.image;
+          }
+        }
+        break;
       case "attack1":
         {
           if (this.image != this.sprites.attack1.image) {
+            this.attack1();
             this.currentFrame = 0;
             this.frames = this.sprites.attack1.frames;
             this.image = this.sprites.attack1.image;
@@ -212,9 +258,9 @@ class fighter extends Sprite {
       case "death":
         {
           if (this.image != this.sprites.death.image) {
-            this.currentFrame = 0;
             this.frames = this.sprites.death.frames;
             this.image = this.sprites.death.image;
+            this.currentFrame = 0;
           }
         }
         break;

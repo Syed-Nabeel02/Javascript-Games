@@ -5,10 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Syed Nabeel || 2D fighter</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap");
       * {
         box-sizing: border-box;
         padding: 0;
         margin: 0;
+        font-family: "Odibee Sans", "cursive";
+        font-weight: normal;
+        color: white;
+        letter-spacing: 0.1rem;
       }
     </style>
   </head>
@@ -16,6 +21,7 @@
     <div
       class="bodyContainer"
       style="
+        background-color: #800000;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         min-width: 90vw;
@@ -28,8 +34,19 @@
         class="controls1"
         style="text-align: center; display: grid; place-items: center"
       >
-        <ul class="controls" style="list-style: none">
-          <li>Attack: Space</li>
+        <ul
+          class="controls"
+          style="
+            list-style: none;
+            font-size: 1.25rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-row-gap: 2rem;
+          "
+        >
+          <li>Player 1</li>
+          <li>Light Attack: Space</li>
+          <li>Heavy Attack: S</li>
           <li>Left: A</li>
           <li>Right: D</li>
           <li>Jump: W</li>
@@ -45,32 +62,40 @@
             position: absolute;
             display: grid;
             grid-template-columns: 1fr auto 1fr;
-            padding: 0 0.25rem;
+            padding: 0.5rem 0.5rem;
           "
         >
           <div
             class="playerHeatlhContainer"
             style="
-              width: 70%;
-              height: 3rem;
+              width: 80%;
+              height: 2rem;
               justify-self: start;
               position: relative;
             "
           >
             <div
               class="playerHealth"
-              style="background-color: red; width: 100%; height: 3rem"
+              style="
+                background-color: red;
+                width: 100%;
+                height: 2rem;
+                border-radius: 0px 10px 10px 0px;
+              "
             ></div>
             <div
               class="playerBorder"
               id="playerHealth"
               style="
-                background-color: green;
+                background-color: rgb(2, 190, 2);
                 position: absolute;
                 width: 100%;
                 height: 100%;
                 top: 0;
                 left: 0;
+                border-right: 0.2rem solid rgb(0, 0, 0);
+                border-bottom: 0.2rem solid rgb(0, 0, 0);
+                border-radius: 0px 10px 10px 0px;
               "
             ></div>
           </div>
@@ -78,12 +103,13 @@
           <div
             class="timer"
             style="
-              background-color: yellow;
+              background-color: rgb(163, 52, 148);
               width: 5rem;
               height: 5rem;
               display: flex;
               place-content: center;
               place-items: center;
+              border-radius: 5px;
             "
             id="timer"
           >
@@ -92,28 +118,34 @@
           <div
             class="enemyHeathContainer"
             style="
-              width: 70%;
-              height: 3rem;
+              width: 80%;
+              height: 2rem;
               justify-self: end;
               position: relative;
             "
           >
             <div
               class="enemyHealth"
-              style="background-color: red; width: 100%; height: 3rem"
+              style="
+                background-color: red;
+                width: 100%;
+                height: 2rem;
+                border-radius: 10px 0px 0px 10px;
+              "
             ></div>
             <div
               class="enemyBorder"
               id="enemyHealth"
               style="
-                background-color: green;
+                background-color: rgb(2, 190, 2);
                 position: absolute;
                 width: 100%;
                 height: 100%;
                 top: 0;
                 right: 0;
-                border: 0.1rem solid whitesmoke;
-                border-radius: 10px 0 0 10px;
+                border-left: 0.2rem solid rgb(0, 0, 0);
+                border-bottom: 0.2rem solid rgb(0, 0, 0);
+                border-radius: 10px 0px 0px 10px;
               "
             ></div>
           </div>
@@ -122,7 +154,9 @@
         <div
           id="result"
           style="
-            color: white;
+            color: #800000;
+            font-size: 10rem;
+            font-weight: bold;
             position: absolute;
             display: none;
             align-items: center;
@@ -135,17 +169,29 @@
         >
           Tie
         </div>
-        <canvas> </canvas>
+        <canvas style="border: 0.5rem solid rgb(0, 0, 0); border-radius: 1rem">
+        </canvas>
       </div>
       <div
         class="controls2"
         style="text-align: center; display: grid; place-items: center"
       >
-        <ul class="controls" style="list-style: none">
-          <li>Attack: Arrow Down</li>
-          <li>Left: Arrow Left</li>
-          <li>Right: Arrow Right</li>
-          <li>Jump: Arrow UP</li>
+        <ul
+          class="controls"
+          style="
+            list-style: none;
+            font-size: 1.25rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-row-gap: 2rem;
+          "
+        >
+          <li>Player 2</li>
+          <li>Light Attack: &darr;</li>
+          <li>Heavy Attack: Enter</li>
+          <li>Left:&larr;</li>
+          <li>Right:&rarr;</li>
+          <li>Jump: &uarr;</li>
         </ul>
       </div>
     </div>

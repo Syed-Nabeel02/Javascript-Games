@@ -16,17 +16,9 @@ const background = new Sprite({
     x: 0,
     y: 0,
   },
-  imgSrc: "./assets/background.png",
+  imgSrc: "./newAssets/Background.png",
 });
-const shop = new Sprite({
-  position: {
-    x: 600,
-    y: 130,
-  },
-  imgSrc: "./assets/shop.png",
-  scale: 2.75,
-  frames: 6,
-});
+
 const player = new fighter({
   position: {
     x: 0,
@@ -38,47 +30,51 @@ const player = new fighter({
   },
   attackBox: {
     offest: {
-      x: 65,
-      y: 50,
+      x: 75,
+      y: 80,
     },
-    width: 150,
+    width: 100,
     height: 50,
   },
-  imgSrc: "./assets/samuraiMack/Idle.png",
-  frames: 8,
-  scale: 2.5,
+  imgSrc: "./newAssets/Ronin/Idle1.png",
+  frames: 18,
+  scale: 1.65,
   offest: {
-    x: 215,
-    y: 157,
+    x: 0,
+    y: -10,
   },
   sprites: {
     idle: {
-      imgSrc: "./assets/samuraiMack/Idle.png",
-      frames: 8,
+      imgSrc: "./newAssets/Ronin/Idle1.png",
+      frames: 18,
     },
     run: {
-      imgSrc: "./assets/samuraiMack/Run.png",
-      frames: 8,
+      imgSrc: "./newAssets/Ronin/Run.png",
+      frames: 24,
     },
     jump: {
-      imgSrc: "./assets/samuraiMack/Jump.png",
-      frames: 2,
+      imgSrc: "./newAssets/Ronin/jump.png",
+      frames: 9,
     },
     fall: {
-      imgSrc: "./assets/samuraiMack/Fall.png",
-      frames: 2,
+      imgSrc: "./newAssets/Ronin/Fall.png",
+      frames: 10,
     },
     attack1: {
-      imgSrc: "./assets/samuraiMack/Attack1.png",
-      frames: 6,
+      imgSrc: "./newAssets/Ronin/Attack1.png",
+      frames: 8,
+    },
+    attack2: {
+      imgSrc: "./newAssets/Ronin/Attack2.png",
+      frames: 12,
     },
     takeHit: {
-      imgSrc: "./assets/samuraiMack/Take hit.png",
-      frames: 4,
+      imgSrc: "./newAssets/Ronin/Take hit.png",
+      frames: 7,
     },
     death: {
-      imgSrc: "./assets/samuraiMack/Death.png",
-      frames: 6,
+      imgSrc: "./newAssets/Ronin/Death.png",
+      frames: 4,
     },
   },
 });
@@ -95,46 +91,50 @@ const enemy = new fighter({
   color: "blue",
   attackBox: {
     offest: {
-      x: -148,
+      x: -108,
       y: 35,
     },
-    width: 150,
+    width: 100,
     height: 50,
   },
-  imgSrc: "./assets/kenji/Idle.png",
-  frames: 4,
-  scale: 2.5,
+  imgSrc: "./newAssets/Striker/Idle.png",
+  frames: 10,
+  scale: 2.25,
   offest: {
-    x: 215,
-    y: 175,
+    x: 160,
+    y: 70,
   },
   sprites: {
     idle: {
-      imgSrc: "./assets/kenji/Idle.png",
-      frames: 4,
+      imgSrc: "./newAssets/Striker/Idle.png",
+      frames: 10,
     },
     run: {
-      imgSrc: "./assets/kenji/Run.png",
+      imgSrc: "./newAssets/Striker/run.png",
       frames: 8,
     },
     jump: {
-      imgSrc: "./assets/kenji/Jump.png",
-      frames: 2,
+      imgSrc: "./newAssets/Striker/Jump.png",
+      frames: 8,
     },
     fall: {
-      imgSrc: "./assets/kenji/Fall.png",
-      frames: 2,
-    },
-    attack1: {
-      imgSrc: "./assets/kenji/Attack1.png",
-      frames: 4,
-    },
-    takeHit: {
-      imgSrc: "./assets/kenji/Take hit.png",
+      imgSrc: "./newAssets/Striker/Fall.png",
       frames: 3,
     },
+    attack1: {
+      imgSrc: "./newAssets/Striker/Attack.png",
+      frames: 7,
+    },
+    attack2: {
+      imgSrc: "./newAssets/Striker/Attack2.png",
+      frames: 8,
+    },
+    takeHit: {
+      imgSrc: "./newAssets/Striker/Take hit.png",
+      frames: 4,
+    },
     death: {
-      imgSrc: "./assets/kenji/Death.png",
+      imgSrc: "./newAssets/Striker/death.png",
       frames: 7,
     },
   },
@@ -163,7 +163,7 @@ function animate() {
   c.fillRect(0, 0, canvas.width, canvas.height);
   //rectanle with black canvas every frame
   background.update();
-  shop.update();
+  //shop.update();
   player.update();
   enemy.update();
 
@@ -171,21 +171,26 @@ function animate() {
   enemy.velocity.x = 0;
 
   //Movement of player
+
   if (keys.a.pressed && player.lastKey === "a") {
-    player.velocity.x = -5;
+    player.velocity.x = -7;
+    player.framesHold = 2;
     player.switchSprite("run");
   } else if (keys.d.pressed && player.lastKey === "d") {
-    player.velocity.x = 5;
+    player.framesHold = 2;
+    player.velocity.x = 7;
     player.switchSprite("run");
   } else {
+    player.framesHold = 5;
     player.switchSprite("idle");
   }
   if (player.velocity.y < 0) {
+    player.framesHold = 5;
     player.switchSprite("jump");
   } else if (player.velocity.y > 0) {
+    player.framesHold = 5;
     player.switchSprite("fall");
   }
-
   //Movement of enemy
   if (keys.ArrowLeft.pressed && enemy.lastKey === "ArrowLeft") {
     enemy.velocity.x = -5;
@@ -196,7 +201,6 @@ function animate() {
   } else {
     enemy.switchSprite("idle");
   }
-
   if (enemy.velocity.y < 0) {
     enemy.switchSprite("jump");
   } else if (enemy.velocity.y > 0) {
@@ -204,42 +208,87 @@ function animate() {
   }
 
   //collision detection player attacking enemy
+  //Attack 1
   if (
     collision(player, enemy) &&
-    player.isAttacking &&
+    player.isAttacking1 &&
+    player.currentFrame == 1
+  ) {
+    player.isAttacking1 = false;
+    console.log("attack");
+    enemy.health -= 8;
+    enemy.takeHit();
+    document.querySelector("#enemyHealth").style.width = enemy.health + "%";
+  }
+  if (
+    !collision(player, enemy) &&
+    player.isAttacking1 &&
+    player.currentFrame == 3
+  ) {
+    player.isAttacking1 = false;
+    console.log("attack miss");
+  }
+  //Attack2
+  if (
+    collision(player, enemy) &&
+    player.isAttacking2 &&
     player.currentFrame == 4
   ) {
-    player.isAttacking = false;
-    console.log("attack");
+    player.isAttacking2 = false;
+    console.log("attack2");
     enemy.health -= 14;
     enemy.takeHit();
     document.querySelector("#enemyHealth").style.width = enemy.health + "%";
   }
   if (
     !collision(player, enemy) &&
-    player.isAttacking &&
-    player.currentFrame == 4
+    player.isAttacking2 &&
+    player.currentFrame == 1
   ) {
-    player.isAttacking = false;
+    player.isAttacking2 = false;
     console.log("attack miss");
   }
 
-  //collision detection for player attacking enemy
-
-  if (collision(enemy, player) && enemy.isAttacking && enemy.currentFrame == 2) {
-    enemy.isAttacking = false;
+  //collision detection for enemy attacking player
+  //Attack1
+  if (
+    collision(enemy, player) &&
+    enemy.isAttacking1 &&
+    enemy.currentFrame == 3
+  ) {
+    enemy.isAttacking1 = false;
     console.log("attack enemy");
     player.takeHit();
-    player.health -= 10;
+    player.health -= 12;
     document.querySelector("#playerHealth").style.width = player.health + "%";
   }
   if (
-    !collision(player, enemy) &&
-    enemy.isAttacking &&
-    enemy.currentFrame == 2
+    !collision(enemy, player) &&
+    enemy.isAttacking1 &&
+    enemy.currentFrame == 3
   ) {
-    player.isAttacking = false;
+    enemy.isAttacking1 = false;
     console.log("attack miss");
+  }
+  //Attack 2
+  if (
+    collision(enemy, player) &&
+    enemy.isAttacking2 &&
+    enemy.currentFrame == 5
+  ) {
+    enemy.isAttacking2 = false;
+    console.log("attack1 enemy");
+    player.takeHit();
+    player.health -= 16;
+    document.querySelector("#playerHealth").style.width = player.health + "%";
+  }
+  if (
+    !collision(enemy, player) &&
+    enemy.isAttacking2 &&
+    enemy.currentFrame == 5
+  ) {
+    enemy.isAttacking2 = false;
+    console.log("attack2 miss");
   }
   //end game
   if (enemy.health <= 0 || player.health <= 0) {
@@ -249,8 +298,7 @@ function animate() {
   //death animation
   if (player.health <= 0) {
     player.switchSprite("death");
-  }
-  if (enemy.health <= 0) {
+  } else if (enemy.health <= 0) {
     enemy.switchSprite("death");
   }
 }
@@ -275,10 +323,18 @@ window.addEventListener("keydown", (event) => {
         }
         break;
 
-      case " ":
-        {
-          player.attack();
+      case " ": {
+        if (player.isAttacking1 == false) {
+          player.framesHold = 3;
           player.switchSprite("attack1");
+        }
+      }
+      case "s":
+        {
+          if (player.isAttacking2 == false) {
+            player.framesHold = 3;
+            player.switchSprite("attack2");
+          }
         }
         break;
     }
@@ -304,8 +360,17 @@ window.addEventListener("keydown", (event) => {
         break;
       case "ArrowDown":
         {
-          enemy.attack();
-          enemy.switchSprite("attack1");
+          if (enemy.isAttacking1 == false) {
+            enemy.switchSprite("attack1");
+          }
+        }
+        break;
+
+      case "Enter":
+        {
+          if (enemy.isAttacking2 == false) {
+            enemy.switchSprite("attack2");
+          }
         }
         break;
     }
