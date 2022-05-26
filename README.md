@@ -10,3 +10,7 @@ This is the deployed link to the game created https://syednabeel-tetris.netlify.
 
 ## Link to 2d fighter
 This is the deployed link to the game created https://syed-2d-fighter.netlify.app/
+
+## Snake 
+This game was written in Java
+Link to github page https://github.com/Syed-Nabeel02/snake
