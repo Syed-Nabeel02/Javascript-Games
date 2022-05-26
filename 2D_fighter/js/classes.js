@@ -177,14 +177,16 @@ class fighter extends Sprite {
     if (
       this.image == this.sprites.jump.image &&
       this.currentFrame < this.sprites.jump.frames - 1 &&
-      (sprite != "attack1" || sprite != "attack2")
+      sprite != "attack1" &&
+      sprite != "attack2"
     ) {
       return;
     }
     if (
       this.image == this.sprites.fall.image &&
       this.currentFrame < this.sprites.fall.frames - 1 &&
-      (sprite != "attack1" || sprite != "attack2")
+      sprite != "attack1" &&
+      sprite != "attack2"
     ) {
       return;
     }

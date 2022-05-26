@@ -115,7 +115,7 @@ const enemy = new fighter({
     },
     jump: {
       imgSrc: "./newAssets/Striker/Jump.png",
-      frames: 8,
+      frames: 3,
     },
     fall: {
       imgSrc: "./newAssets/Striker/Fall.png",
